@@ -60,14 +60,14 @@ def score(video, consider_views=False):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('-k', '--key', default=os.getenv('YT_API_KEY'), help='Your YouTube API key.')
+    parser.add_argument('-k', '--key', default=os.getenv('YT_API_KEY'), help='Your YouTube API key. You may also specify this in the "YT_API_KEY" environment variable.')
     parser.add_argument('-v','--videos', action='store_true', help='Show individual videos instead of playlists.')
     parser.add_argument('-n','--num-videos', default=50, type=int, help='Number of top videos to include.')
     parser.add_argument('--consider-views', action='store_true', help='Also consider likes per view.')
     parser.add_argument('-c','--rebuild-cache', action='store_true', help='Rebuild the playlist video caches.')
     parser.add_argument('-i','--ids', action='store_true', help='Instead of the full URLs, output IDs only.')
     parser.add_argument('-p', '--polymer', action='store_true', help='Allow the new YouTube website for playlists.')
-    parser.add_argument('playlist', nargs='+', help='Playlist IDs or URLs.')
+    parser.add_argument('playlist', nargs='+', help='Playlist ID or URL.')
     args = parser.parse_args(sys.argv[1:])
     
     API_KEY = args.key
