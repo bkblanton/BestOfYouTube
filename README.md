@@ -2,6 +2,12 @@
 Given a YouTube playlist, this Python 3 script generates a new playlist of the best videos, unaffected by video popularity.
 
 ## Usage
+### Example
+```
+$ python bestof.py "https://www.youtube.com/watch?v=GAPqEAWW9lc&list=PU6nSFpj9HTCZ5t-N3Rm3-HA"
+https://www.youtube.com/playlist?list=TLGGwGS6wazU5oswODA1MjAxOA&disable_polymer=true
+```
+### Options
 ```
 usage: bestof.py [-h] [-k KEY] [-v] [-n NUM_VIDEOS] [--consider-views] [-c]
                  [-i] [-p]
@@ -22,10 +28,10 @@ optional arguments:
   -i, --ids             Instead of the full URLs, output IDs only.
   -p, --polymer         Allow the new YouTube website for playlists.
 ```
-### Example
-```shell
-$ python bestof.py "https://www.youtube.com/watch?v=GAPqEAWW9lc&list=PU6nSFpj9HTCZ5t-N3Rm3-HA"
-https://www.youtube.com/playlist?list=TLGGwGS6wazU5oswODA1MjAxOA&disable_polymer=true
+
+## Installing Requirements
+```
+pip install -r requirements.txt
 ```
 
 ## Obtaining a YouTube API key
