@@ -9,8 +9,7 @@ https://www.youtube.com/playlist?list=TLGGwGS6wazU5oswODA1MjAxOA&disable_polymer
 ```
 ### Options
 ```
-usage: bestof.py [-h] [-k KEY] [-v] [-n NUM_VIDEOS] [--consider-views] [-c]
-                 [-i] [-p]
+usage: bestof.py [-h] [-k KEY] [-v] [-t] [-n NUM_VIDEOS] [-V] [-c] [-i] [-p]
                  playlist [playlist ...]
 
 positional arguments:
@@ -21,9 +20,10 @@ optional arguments:
   -k KEY, --key KEY     Your YouTube API key. You may also specify this in the
                         "YT_API_KEY" environment variable.
   -v, --videos          Show individual videos instead of playlists.
+  -t, --video-titles    Show video titles.
   -n NUM_VIDEOS, --num-videos NUM_VIDEOS
                         Number of top videos to include.
-  --consider-views      Also consider likes per view.
+  -V, --consider-views  Also consider likes per view.
   -c, --rebuild-cache   Rebuild the playlist video caches.
   -i, --ids             Instead of the full URLs, output IDs only.
   -p, --polymer         Allow the new YouTube website for playlists.
