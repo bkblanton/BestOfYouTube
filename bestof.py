@@ -62,6 +62,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-k', '--key', default=os.getenv('YT_API_KEY'), help='Your YouTube API key. You may also specify this in the "YT_API_KEY" environment variable.')
     parser.add_argument('-v','--videos', action='store_true', help='Show individual videos instead of playlists.')
+    parser.add_argument('-t', '--video-titles', action='store_true', help='Show video titles.')
     parser.add_argument('-n','--num-videos', default=50, type=int, help='Number of top videos to include.')
     parser.add_argument('-V', '--consider-views', action='store_true', help='Also consider likes per view.')
     parser.add_argument('-c','--rebuild-cache', action='store_true', help='Rebuild the playlist video caches.')
@@ -71,7 +72,7 @@ if __name__ == '__main__':
     args = parser.parse_args(sys.argv[1:])
     
     API_KEY = args.key
-    if API_KEY is None:
+    if API_KEY is None or API_KEY == '':
         print('Please set the "YT_API_KEY" environment variable or "-k" argument to your YouTube API key.', file=sys.stderr)
         exit(1)
 
@@ -98,10 +99,14 @@ if __name__ == '__main__':
 
     if args.videos:
         for video in videos:
+            out_cols  = []
             if args.ids:
-                print(video['id'])
+                out_cols.append(video['id'])
             else:
-                print('https://youtu.be/' + video['id'])
+                out_cols.append('https://youtu.be/' + video['id'])
+            if args.video_titles:
+                out_cols.append(video['snippet']['title'])
+            print(*out_cols, sep='\t')
     else:
         MAX_WATCH_VIDEOS = 50
         for i in range(0, len(videos), MAX_WATCH_VIDEOS):
